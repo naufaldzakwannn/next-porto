@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
+import Image from "next/image";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,7 +19,7 @@ export default function About() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -90,17 +91,15 @@ export default function About() {
                 justifyContent: "center",
               }}
             >
-              <span
+              <Image
+                src="/images/Naufal.jpg"
+                alt="Foto"
+                fill
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "5rem",
-                  fontStyle: "italic",
-                  color: "var(--accent)",
-                  opacity: 0.3,
+                  objectFit: "cover",
                 }}
-              >
-                AP
-              </span>
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
             </div>
             {/* Gold corner accents */}
             {["top-left", "top-right", "bottom-left", "bottom-right"].map((pos) => (
@@ -232,14 +231,7 @@ export default function About() {
               </svg>
             </a>
             {Object.entries(portfolioData.social).map(([key, url]) => (
-              <a
-                key={key}
-                href={url}
-                className="btn-outline"
-                style={{ padding: "13px 20px" }}
-                target="_blank"
-                rel="noopener"
-              >
+              <a key={key} href={url} className="btn-outline" style={{ padding: "13px 20px" }} target="_blank" rel="noopener">
                 {key.charAt(0).toUpperCase() + key.slice(1)}
               </a>
             ))}
