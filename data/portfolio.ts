@@ -1,11 +1,11 @@
 export const portfolioData = {
   name: "Naufal Dzakwan",
-  title: "Full-Stack Developer",
-  subtitle: "& UI/UX Designer",
-  tagline: "Crafting digital experiences that leave a mark.",
-  bio: "Saya adalah developer dan desainer yang passionate dalam membangun produk digital yang tidak hanya fungsional, tetapi juga indah. Dengan pengalaman 4+ tahun, saya telah membantu startup dan brand besar menghadirkan produk yang dicintai pengguna.",
-  location: "Jakarta, Indonesia",
-  email: "arya@example.com",
+  title: "Web Developer",
+  subtitle: "& Quality Assurance",
+  // tagline: "Crafting digital experiences that leave a mark.",
+  bio: "Saya adalah developer yang passionate dalam membangun Web yang tidak hanya fungsional, tetapi juga indah. Dengan pengalaman 2 tahun, saya telah membantu perusahaan dan pemerintahan daerah.",
+  location: "Padang, Indonesia",
+  email: "naufaldzakwan189@gmail.com",
   availability: true,
 
   social: {
@@ -26,7 +26,7 @@ export const portfolioData = {
     { name: "Three.js / WebGL", level: 68 },
   ],
 
-  techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Redis", "Docker", "Figma", "Framer Motion", "Three.js", "AWS", "GraphQL", "Tailwind CSS", "Vercel", "Git"],
+  techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Laravel", "Codeigniter", "Mysql", "Framer Motion", "Tailwind CSS", "Bootstrap", "Vercel", "Git"],
 
   projects: [
     {
@@ -105,16 +105,16 @@ export const portfolioData = {
 
   experience: [
     {
-      role: "Senior Frontend Engineer",
-      company: "Tokopedia",
-      period: "2023 — Sekarang",
-      desc: "Memimpin tim frontend 5 orang dalam membangun fitur-fitur baru untuk platform e-commerce terbesar di Indonesia.",
+      role: "Team IT",
+      company: "PT Nusantara Pelabuhan Handal",
+      period: "Agustus - Desember 2025",
+      desc: "Mengembangkan dan memelihara sistem billing, Container DG, dan Log.",
     },
     {
-      role: "Fullstack Developer",
-      company: "Bukalapak",
-      period: "2021 — 2023",
-      desc: "Mengembangkan dan memelihara sistem pembayaran dan checkout dengan traffic jutaan pengguna per hari.",
+      role: "Web Developer",
+      company: "Dinas Peternakan dan kesehatan hewan provinsi Sumatera Barat",
+      period: "2023",
+      desc: "Merancang dan membangun web diagnosa penyakit sapi dengan menggunakan metode certainty factor.",
     },
     {
       role: "Frontend Developer",

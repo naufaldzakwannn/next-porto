@@ -46,8 +46,7 @@ export default function Hero() {
           right: "-10%",
           width: "700px",
           height: "700px",
-          background:
-            "radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -222,20 +221,14 @@ export default function Hero() {
           {portfolioData.tagline}
         </p>
 
-        <div
-          className="animate-fade-up delay-500 opacity-0"
-          style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
-        >
+        <div className="animate-fade-up delay-500 opacity-0" style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
           <a href="#work" className="btn-primary">
             View My Work
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </a>
-          <a
-            href={`mailto:${portfolioData.email}`}
-            className="btn-outline"
-          >
+          <a href={`mailto:${portfolioData.email}`} className="btn-outline">
             Get In Touch
           </a>
         </div>
@@ -252,9 +245,9 @@ export default function Hero() {
           }}
         >
           {[
-            { num: "4+", label: "Years Experience" },
-            { num: "30+", label: "Projects Delivered" },
-            { num: "15+", label: "Happy Clients" },
+            { num: "2", label: "Years Experience" },
+            { num: "10", label: "Projects Delivered" },
+            { num: "2", label: "Happy Clients" },
           ].map((stat) => (
             <div key={stat.label}>
               <div
