@@ -1,7 +1,7 @@
 export const portfolioData = {
   name: "Naufal Dzakwan",
   title: "Web Developer",
-  subtitle: "& Quality Assurance",
+  subtitle: "",
   // tagline: "Crafting digital experiences that leave a mark.",
   bio: "Saya adalah developer yang passionate dalam membangun Web yang tidak hanya fungsional, tetapi juga indah. Dengan pengalaman 2 tahun, saya telah membantu perusahaan dan pemerintahan daerah.",
   location: "Padang, Indonesia",
@@ -9,10 +9,9 @@ export const portfolioData = {
   availability: true,
 
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    dribbble: "https://dribbble.com",
+    github: "https://github.com/naufaldzakwannn",
+    linkedin: "https://www.linkedin.com/in/naufal-dzakwan-almushadaaq-5b6154312/",
+    instagram: "https://www.instagram.com/al_mushadaaq/",
   },
 
   skills: [
@@ -117,10 +116,10 @@ export const portfolioData = {
       desc: "Merancang dan membangun web diagnosa penyakit sapi dengan menggunakan metode certainty factor.",
     },
     {
-      role: "Frontend Developer",
-      company: "Moladin",
-      period: "2020 — 2021",
-      desc: "Membangun aplikasi web untuk platform jual beli mobil dengan integrasi berbagai payment gateway.",
+      role: "Freelance",
+      company: "-",
+      period: "2025 — 2026",
+      desc: "Membangun aplikasi web untuk berbagai platform.",
     },
   ],
 };

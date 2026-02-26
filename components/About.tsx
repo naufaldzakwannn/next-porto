@@ -59,10 +59,10 @@ export default function About() {
               marginBottom: "32px",
             }}
           >
-            Designer who
+            {/* Designer who
             <br />
             <span className="gradient-text">codes.</span>
-            <br />
+            <br /> */}
             Developer who
             <br />
             <span className="gradient-text">designs.</span>
@@ -144,9 +144,7 @@ export default function About() {
               lineHeight: 1.8,
               marginBottom: "48px",
             }}
-          >
-            Saya percaya bahwa teknologi terbaik adalah yang terasa intuitif dan tak terlihat — ia hanya bekerja, dengan sempurna. Pendekatan saya menggabungkan riset mendalam, desain yang berpusat pada manusia, dan engineering yang solid.
-          </p>
+          ></p>
 
           {/* Experience */}
           <div className="reveal opacity-0" style={{ marginBottom: "48px" }}>
