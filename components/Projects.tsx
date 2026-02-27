@@ -7,16 +7,29 @@ export default function Projects() {
   const [hovered, setHovered] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const categories = [
-    "all",
-    ...Array.from(new Set(portfolioData.projects.map((p) => p.category.split(" ")[0]))),
-  ];
+  const categories = ["all", ...Array.from(new Set(portfolioData.projects.map((p) => p.category.split(" ")[0])))];
 
-  const filtered =
-    filter === "all"
-      ? portfolioData.projects
-      : portfolioData.projects.filter((p) => p.category.toLowerCase().includes(filter.toLowerCase()));
+  const filtered = filter === "all" ? portfolioData.projects : portfolioData.projects.filter((p) => p.category.toLowerCase().includes(filter.toLowerCase()));
 
+  // ✅ Re-trigger animasi setiap kali filter berubah
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const cards = sectionRef.current.querySelectorAll<HTMLElement>(".project-card");
+    cards.forEach((el, i) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "none";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.transition = `opacity 0.4s ease ${i * 0.07}s, transform 0.4s cubic-bezier(0.23,1,0.32,1) ${i * 0.07}s`;
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        });
+      });
+    });
+  }, [filter]);
+
+  // Initial section reveal
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,7 +43,7 @@ export default function Projects() {
           }
         });
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -47,7 +60,6 @@ export default function Projects() {
         overflow: "hidden",
       }}
     >
-      {/* Background decoration */}
       <div
         style={{
           position: "absolute",
@@ -84,74 +96,74 @@ export default function Projects() {
                 letterSpacing: "-0.02em",
               }}
             >
-              What I've
+              What I&apos;ve
               <br />
               <span className="gradient-text">Built.</span>
             </h2>
           </div>
 
           {/* Filter tabs */}
-          <div
-            className="reveal opacity-0"
-            style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  padding: "8px 16px",
-                  background: filter === cat ? "var(--accent)" : "transparent",
-                  color: filter === cat ? "var(--bg)" : "var(--text-muted)",
-                  border: filter === cat ? "1px solid var(--accent)" : "1px solid var(--border)",
-                  cursor: "none",
-                  transition: "all 0.3s ease",
-                  borderRadius: "var(--radius)",
-                }}
-                onMouseEnter={(e) => {
-                  if (filter !== cat) {
-                    (e.target as HTMLButtonElement).style.borderColor = "var(--accent)";
-                    (e.target as HTMLButtonElement).style.color = "var(--accent)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (filter !== cat) {
-                    (e.target as HTMLButtonElement).style.borderColor = "var(--border)";
-                    (e.target as HTMLButtonElement).style.color = "var(--text-muted)";
-                  }
-                }}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="reveal opacity-0" style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            {categories.map((cat) => {
+              const isActive = filter === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    padding: "8px 16px",
+                    background: isActive ? "var(--accent)" : "transparent",
+                    color: isActive ? "var(--bg)" : "var(--text-muted)",
+                    border: isActive ? "1px solid var(--accent)" : "1px solid var(--border)",
+                    cursor: "none",
+                    transition: "all 0.3s ease",
+                    borderRadius: "var(--radius)",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = "var(--accent)";
+                      e.currentTarget.style.color = "var(--accent)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = "var(--border)";
+                      e.currentTarget.style.color = "var(--text-muted)";
+                    }
+                  }}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Featured projects — large */}
+        {/* Featured projects */}
         <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginBottom: "2px" }}>
           {filtered
             .filter((p) => p.featured)
             .map((project, i) => (
               <div
                 key={project.id}
-                className="reveal opacity-0"
+                className="project-card"
                 onMouseEnter={() => setHovered(project.id)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: i % 2 === 0 ? "1fr 1fr" : "1fr 1fr",
+                  gridTemplateColumns: "1fr 1fr",
                   minHeight: "360px",
-                  border: "1px solid var(--border)",
+                  border: "1px solid",
+                  borderColor: hovered === project.id ? "var(--border-hover)" : "var(--border)",
                   overflow: "hidden",
                   cursor: "none",
                   transition: "border-color 0.3s ease",
-                  borderColor: hovered === project.id ? "var(--border-hover)" : "var(--border)",
+                  opacity: 0,
                 }}
-                className={`reveal opacity-0 project-row-${i % 2}`}
               >
                 {/* Info */}
                 <div
@@ -174,15 +186,7 @@ export default function Projects() {
                       }}
                     >
                       <span className="tag">{project.category}</span>
-                      <span
-                        style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: "0.7rem",
-                          color: "var(--text-dim)",
-                        }}
-                      >
-                        {project.year}
-                      </span>
+                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "var(--text-dim)" }}>{project.year}</span>
                     </div>
                     <h3
                       style={{
@@ -196,33 +200,15 @@ export default function Projects() {
                     >
                       {project.title}
                     </h3>
-                    <p
-                      style={{
-                        fontSize: "0.9rem",
-                        color: "var(--text-muted)",
-                        lineHeight: 1.7,
-                        marginBottom: "24px",
-                      }}
-                    >
-                      {project.description}
-                    </p>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "24px" }}>{project.description}</p>
                     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                       {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          style={{
-                            fontFamily: "'DM Mono', monospace",
-                            fontSize: "0.65rem",
-                            color: "var(--text-dim)",
-                            letterSpacing: "0.08em",
-                          }}
-                        >
+                        <span key={t} style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "var(--text-dim)", letterSpacing: "0.08em" }}>
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
-
                   <div style={{ display: "flex", gap: "16px", marginTop: "32px" }}>
                     <a href={project.link} className="btn-primary" style={{ padding: "10px 24px" }}>
                       View Project
@@ -241,7 +227,7 @@ export default function Projects() {
                 {/* Visual */}
                 <div
                   style={{
-                    background: `linear-gradient(135deg, var(--surface-2), var(--surface))`,
+                    background: "linear-gradient(135deg, var(--surface-2), var(--surface))",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -255,13 +241,7 @@ export default function Projects() {
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: `linear-gradient(135deg, ${
-                        project.gradient.includes("amber")
-                          ? "rgba(120,80,20,0.2)"
-                          : project.gradient.includes("emerald")
-                          ? "rgba(20,80,60,0.2)"
-                          : "rgba(60,20,80,0.2)"
-                      }, transparent)`,
+                      background: `linear-gradient(135deg, ${project.gradient.includes("amber") ? "rgba(120,80,20,0.2)" : project.gradient.includes("emerald") ? "rgba(20,80,60,0.2)" : "rgba(60,20,80,0.2)"}, transparent)`,
                     }}
                   />
                   <div
@@ -303,60 +283,30 @@ export default function Projects() {
             ))}
         </div>
 
-        {/* Non-featured — grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "2px",
-            marginTop: "2px",
-          }}
-          className="projects-grid"
-        >
+        {/* Non-featured grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", marginTop: "2px" }} className="projects-grid">
           {filtered
             .filter((p) => !p.featured)
             .map((project) => (
               <div
                 key={project.id}
-                className="reveal opacity-0 card-glass"
+                className="project-card card-glass"
                 onMouseEnter={() => setHovered(project.id)}
                 onMouseLeave={() => setHovered(null)}
-                style={{
-                  padding: "36px",
-                  position: "relative",
-                  overflow: "hidden",
-                  cursor: "none",
-                  borderRadius: 0,
-                }}
+                style={{ padding: "36px", position: "relative", overflow: "hidden", cursor: "none", borderRadius: 0, opacity: 0 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    marginBottom: "24px",
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
                   <span className="tag">{project.year}</span>
                   <a
                     href={project.link}
-                    style={{
-                      width: "36px",
-                      height: "36px",
-                      border: "1px solid var(--border)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "var(--text-muted)",
-                      transition: "all 0.3s ease",
-                    }}
+                    style={{ width: "36px", height: "36px", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-muted)", transition: "all 0.3s ease" }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
-                      (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+                      e.currentTarget.style.borderColor = "var(--accent)";
+                      e.currentTarget.style.color = "var(--accent)";
                     }}
                     onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                      (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
+                      e.currentTarget.style.borderColor = "var(--border)";
+                      e.currentTarget.style.color = "var(--text-muted)";
                     }}
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -364,29 +314,8 @@ export default function Projects() {
                     </svg>
                   </a>
                 </div>
-
-                <h3
-                  style={{
-                    fontSize: "1.2rem",
-                    fontStyle: "italic",
-                    fontWeight: 700,
-                    marginBottom: "12px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "var(--text-muted)",
-                    lineHeight: 1.7,
-                    marginBottom: "20px",
-                  }}
-                >
-                  {project.description}
-                </p>
-
+                <h3 style={{ fontSize: "1.2rem", fontStyle: "italic", fontWeight: 700, marginBottom: "12px", letterSpacing: "-0.01em" }}>{project.title}</h3>
+                <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "20px" }}>{project.description}</p>
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                   {project.tech.slice(0, 3).map((t) => (
                     <span key={t} className="tag" style={{ fontSize: "0.6rem" }}>
@@ -402,7 +331,7 @@ export default function Projects() {
       <style>{`
         @media (max-width: 900px) {
           .projects-grid { grid-template-columns: 1fr !important; }
-          .project-row-0, .project-row-1 { grid-template-columns: 1fr !important; }
+          .project-card { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
