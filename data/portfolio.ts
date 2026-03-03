@@ -18,11 +18,11 @@ export const portfolioData = {
     { name: "React / Next.js", level: 95 },
     { name: "TypeScript", level: 90 },
     { name: "Node.js / Express", level: 85 },
-    { name: "UI/UX Design (Figma)", level: 88 },
+    { name: "Laravel", level: 88 },
     { name: "PostgreSQL / Prisma", level: 80 },
-    { name: "Framer Motion", level: 85 },
-    { name: "Docker / DevOps", level: 72 },
-    { name: "Three.js / WebGL", level: 68 },
+    { name: "MySQL", level: 68 },
+    { name: "Bootstrap", level: 85 },
+    { name: "Tailwind CSS / CSS3", level: 72 },
   ],
 
   techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Laravel", "Codeigniter", "Mysql", "Framer Motion", "Tailwind CSS", "Bootstrap", "Vercel", "Git"],
@@ -31,7 +31,7 @@ export const portfolioData = {
     {
       id: 1,
       title: "Dangerious Goods Monitoring",
-      category: "Web Development",
+      category: "Development",
       description: "DG Monitoring adalah sistem berbasis web yang digunakan untuk memantau dan mengelola data Dangerous Goods (DG) atau barang berbahaya pada kontainer..",
       tech: ["Laravel", "MySQL", "Tailwind"],
       year: "2025",
@@ -46,7 +46,7 @@ export const portfolioData = {
     {
       id: 2,
       title: "Billing ADP",
-      category: "Web Development",
+      category: "Development",
       description: "Untuk memproses dokumen rc(receiving) dan dokumen sp2(delivery).",
       tech: ["Laravel +", "React", "MySQL", "Tailwind"],
       year: "2025",
@@ -61,7 +61,7 @@ export const portfolioData = {
     {
       id: 3,
       title: "Monitoring Billing",
-      category: "Web Development",
+      category: "Development",
       description: "Mengelola Invoice pembayaran antara Perusahaan pelayaran dengan Perusahaan dan memeriksa faktur pajak aktif.",
       tech: ["Laravel", "MySQL", "Tailwind"],
       year: "2025",
@@ -76,7 +76,7 @@ export const portfolioData = {
     {
       id: 4,
       title: "Monitoring Log",
-      category: "Web Development",
+      category: "Development",
       description: "Memonitoring segala bentuk log baik yang sukses maupun yang error pada aplikasi.",
       tech: ["Laravel +", "React", "Oracle", "Tailwind"],
       year: "2025",
