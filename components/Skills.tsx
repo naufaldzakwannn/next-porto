@@ -25,20 +25,19 @@ const skillIcons: Record<string, { icon: string; v: string }> = {
 };
 
 const techIcons: Record<string, { icon: string; v: string }> = {
+  Git: { icon: "git", v: "original" },
+  Github: { icon: "github", v: "plain" },
+  Vercel: { icon: "vercel", v: "original" },
+  Vite: { icon: "vitejs", v: "original" },
+  Canva: { icon: "canva", v: "plain" },
   GraphQL: { icon: "graphql", v: "plain" },
   Redis: { icon: "redis", v: "original" },
-  "AWS S3": { icon: "amazonwebservices", v: "plain" },
-  Vercel: { icon: "vercel", v: "original" },
   Netlify: { icon: "netlify", v: "original" },
   Jest: { icon: "jest", v: "plain" },
   Cypress: { icon: "cypressio", v: "original" },
   Storybook: { icon: "storybook", v: "original" },
-  Webpack: { icon: "webpack", v: "original" },
-  Vite: { icon: "vitejs", v: "original" },
   Linux: { icon: "linux", v: "original" },
   Nginx: { icon: "nginx", v: "original" },
-  "CI/CD": { icon: "github", v: "original" },
-  "Agile / Scrum": { icon: "jira", v: "original" },
 };
 
 const FALLBACKS: Record<string, string[]> = {
@@ -201,131 +200,76 @@ export default function Skills() {
         </div>
 
         {/* ── Bottom row ── */}
-        <div
-          className="skills-bottom"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: "1px",
-            background: "var(--border)",
-          }}
-        >
-          {/* Philosophy */}
-          <div style={{ background: "var(--bg-2)", padding: "40px" }}>
-            <div
-              className="reveal opacity-0"
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.6rem",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "var(--text-dim)",
-                marginBottom: "24px",
-              }}
-            >
-              Philosophy
-            </div>
-            {[
-              { num: "01", title: "Performance First", desc: "Obsesif dengan Core Web Vitals dan setiap millisecond." },
-              { num: "02", title: "Accessible by Default", desc: "Aksesibilitas adalah fondasi, bukan afterthought." },
-              { num: "03", title: "Beauty Matters", desc: "Kode dan desain yang indah mencerminkan kepedulian." },
-            ].map((item, i) => (
+        <div style={{ background: "var(--bg-2)", padding: "40px 0 0" }}>
+          <div
+            className="reveal opacity-0"
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "0.6rem",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--text-dim)",
+              marginBottom: "24px",
+            }}
+          >
+            Also comfortable with
+          </div>
+          <div className="reveal opacity-0" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+            {Object.entries(techIcons).map(([tech, meta]) => (
               <div
-                key={i}
-                className="reveal opacity-0"
+                key={tech}
                 style={{
                   display: "flex",
-                  gap: "20px",
-                  padding: "16px 0",
-                  borderBottom: i < 2 ? "1px solid var(--border)" : "none",
-                  alignItems: "flex-start",
+                  alignItems: "center",
+                  gap: "10px",
+                  border: "1px solid var(--border)",
+                  padding: "10px 18px",
+                  borderRadius: "999px",
+                  transition: "all 0.25s ease",
+                  cursor: "default",
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "var(--accent)";
+                  el.style.background = "rgba(201,169,110,0.06)";
+                  const img = el.querySelector("img") as HTMLElement;
+                  if (img) img.style.filter = "none";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "var(--border)";
+                  el.style.background = "transparent";
+                  const img = el.querySelector("img") as HTMLElement;
+                  if (img) img.style.filter = "grayscale(1) brightness(0.5)";
                 }}
               >
+                <img
+                  src={`${BASE}/${meta.icon}/${meta.icon}-${meta.v}.svg`}
+                  alt={tech}
+                  width={20}
+                  height={20}
+                  style={{
+                    objectFit: "contain",
+                    filter: "grayscale(1) brightness(0.5)",
+                    transition: "filter 0.25s ease",
+                    flexShrink: 0,
+                  }}
+                  onError={(e) => handleError(e, meta.icon)}
+                />
                 <span
                   style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: "0.6rem",
-                    color: "var(--accent)",
-                    opacity: 0.5,
-                    flexShrink: 0,
-                    marginTop: "2px",
+                    fontSize: "0.7rem",
+                    color: "var(--text-muted)",
+                    letterSpacing: "0.05em",
+                    lineHeight: 1,
                   }}
                 >
-                  {item.num}
+                  {tech}
                 </span>
-                <div>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 500, marginBottom: "3px" }}>{item.title}</div>
-                  <div style={{ fontSize: "0.78rem", color: "var(--text-dim)", lineHeight: 1.6 }}>{item.desc}</div>
-                </div>
               </div>
             ))}
-          </div>
-
-          {/* Also comfortable with */}
-          <div style={{ background: "var(--bg-2)", padding: "40px" }}>
-            <div
-              className="reveal opacity-0"
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.6rem",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "var(--text-dim)",
-                marginBottom: "24px",
-              }}
-            >
-              Also comfortable with
-            </div>
-            <div className="reveal opacity-0" style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {Object.entries(techIcons).map(([tech, meta]) => (
-                <div
-                  key={tech}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "7px",
-                    border: "1px solid var(--border)",
-                    padding: "6px 12px",
-                    transition: "all 0.25s ease",
-                    cursor: "default",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "var(--border-hover)";
-                    el.style.background = "rgba(255,255,255,0.03)";
-                    const img = el.querySelector("img") as HTMLElement;
-                    if (img) img.style.filter = "none";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "var(--border)";
-                    el.style.background = "transparent";
-                    const img = el.querySelector("img") as HTMLElement;
-                    if (img) img.style.filter = "grayscale(1) brightness(0.5)";
-                  }}
-                >
-                  <img
-                    src={`${BASE}/${meta.icon}/${meta.icon}-${meta.v}.svg`}
-                    alt={tech}
-                    width={16}
-                    height={16}
-                    style={{ objectFit: "contain", filter: "grayscale(1) brightness(0.5)", transition: "filter 0.25s ease", flexShrink: 0 }}
-                    onError={(e) => handleError(e, meta.icon)}
-                  />
-                  <span
-                    style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.62rem",
-                      color: "var(--text-muted)",
-                      letterSpacing: "0.05em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {tech}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
