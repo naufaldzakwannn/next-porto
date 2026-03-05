@@ -20,7 +20,7 @@ export default function Contact() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -94,7 +94,7 @@ export default function Contact() {
               <br />
               <span className="gradient-text">great.</span>
             </h2>
-            <p
+            {/* <p
               className="reveal opacity-0"
               style={{
                 fontSize: "1rem",
@@ -105,7 +105,7 @@ export default function Contact() {
               }}
             >
               Punya proyek menarik atau ingin berdiskusi? Saya selalu terbuka untuk peluang baru dan kolaborasi yang bermakna.
-            </p>
+            </p> */}
 
             {/* Contact details */}
             <div className="reveal opacity-0" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -179,10 +179,7 @@ export default function Contact() {
             </div>
 
             {/* Social */}
-            <div
-              className="reveal opacity-0"
-              style={{ display: "flex", gap: "16px", marginTop: "40px" }}
-            >
+            <div className="reveal opacity-0" style={{ display: "flex", gap: "16px", marginTop: "40px" }}>
               {Object.entries(portfolioData.social).map(([key, url]) => (
                 <a
                   key={key}
@@ -237,17 +234,12 @@ export default function Contact() {
                 >
                   Message sent!
                 </div>
-                <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  Terima kasih sudah menghubungi saya. Saya akan segera membalas.
-                </p>
+                <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>Terima kasih sudah menghubungi saya. Saya akan segera membalas.</p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                style={{ display: "flex", flexDirection: "column", gap: "24px" }}
-              >
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                 {[
-                  { key: "name", label: "Your Name", type: "text", placeholder: "Nama kamu" },
+                  { key: "name", label: "Your Name", type: "text", placeholder: "Nama" },
                   { key: "email", label: "Email Address", type: "email", placeholder: "email@example.com" },
                 ].map((field) => (
                   <div key={field.key}>
@@ -269,9 +261,7 @@ export default function Contact() {
                       required
                       placeholder={field.placeholder}
                       value={(formState as any)[field.key]}
-                      onChange={(e) =>
-                        setFormState((prev) => ({ ...prev, [field.key]: e.target.value }))
-                      }
+                      onChange={(e) => setFormState((prev) => ({ ...prev, [field.key]: e.target.value }))}
                       style={{
                         width: "100%",
                         padding: "14px 18px",
@@ -307,11 +297,9 @@ export default function Contact() {
                   <textarea
                     required
                     rows={6}
-                    placeholder="Ceritakan proyek atau ide kamu..."
+                    placeholder="Pesan"
                     value={formState.message}
-                    onChange={(e) =>
-                      setFormState((prev) => ({ ...prev, message: e.target.value }))
-                    }
+                    onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
                     style={{
                       width: "100%",
                       padding: "14px 18px",

@@ -25,7 +25,7 @@ export const portfolioData = {
     { name: "Tailwind CSS / CSS3", level: 72 },
   ],
 
-  techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Laravel", "Codeigniter", "Mysql", "Framer Motion", "Tailwind CSS", "Bootstrap", "Vercel", "Git", "Canva", "Github"],
+  techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Laravel", "Codeigniter", "Mysql", "Framer Motion", "Tailwind CSS", "Bootstrap", "Vercel", "Git", "Canva", "Github", "Code Igniter"],
 
   projects: [
     {

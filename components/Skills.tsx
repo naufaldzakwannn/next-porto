@@ -25,6 +25,7 @@ const skillIcons: Record<string, { icon: string; v: string }> = {
 };
 
 const techIcons: Record<string, { icon: string; v: string }> = {
+  CodeIgniter: { icon: "codeigniter", v: "original" },
   Git: { icon: "git", v: "original" },
   Github: { icon: "github", v: "plain" },
   Vercel: { icon: "vercel", v: "original" },
