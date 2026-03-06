@@ -72,22 +72,6 @@ export default function Navbar() {
           backdropFilter: scrolled ? "blur(20px)" : "none",
         }}
       >
-        {/* Logo
-        <a
-          href="#"
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "1.4rem",
-            fontStyle: "italic",
-            color: "var(--accent)",
-            textDecoration: "none",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          {portfolioData.name.split(" ")[0]}
-          <span style={{ color: "var(--text)", fontStyle: "normal" }}>.</span>
-        </a> */}
-
         {/* Logo */}
         <a
           href="#"
@@ -235,7 +219,7 @@ export default function Navbar() {
           .show-mobile { display: flex !important; }
         }
 
-          @keyframes logoPulse {
+        @keyframes logoPulse {
           0%, 100% { opacity: 1; text-shadow: 0 0 0px transparent; }
           50%       { opacity: 0.7; text-shadow: 0 0 18px var(--accent); }
         }

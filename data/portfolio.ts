@@ -3,7 +3,7 @@ export const portfolioData = {
   title: "Web Developer",
   subtitle: "",
   // tagline: "Crafting digital experiences that leave a mark.",
-  bio: "Saya adalah developer yang passionate dalam membangun Web yang tidak hanya fungsional, tetapi juga indah. Dengan pengalaman 2 tahun, saya telah membantu perusahaan dan pemerintahan daerah.",
+  bio: "Saya merupakan web developer yang berfokus pada pengembangan website yang fungsional sekaligus memiliki tampilan yang menarik. Dengan pengalaman sekitar 2 tahun, saya telah berkontribusi dalam berbagai proyek pengembangan web untuk perusahaan maupun instansi pemerintahan daerah.",
   location: "Padang, Indonesia",
   email: "naufaldzakwan189@gmail.com",
   availability: true,
