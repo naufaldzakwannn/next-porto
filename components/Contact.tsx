@@ -26,10 +26,27 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Replace with your form submission logic (e.g. Resend, EmailJS, Formspree)
-    setSent(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSent(true);
+        setFormState({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   return (
