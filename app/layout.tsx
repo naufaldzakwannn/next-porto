@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Naufal Dzakwan",
+  title: "Naufal Dzakwan | Web Developer",
   description: "Portofolio",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
