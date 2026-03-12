@@ -31,14 +31,13 @@ const techIcons: Record<string, { icon: string; v: string }> = {
   Vercel: { icon: "vercel", v: "original" },
   Vite: { icon: "vitejs", v: "original" },
   Canva: { icon: "canva", v: "plain" },
-  GraphQL: { icon: "graphql", v: "plain" },
-  Redis: { icon: "redis", v: "original" },
-  Netlify: { icon: "netlify", v: "original" },
-  Jest: { icon: "jest", v: "plain" },
-  Cypress: { icon: "cypressio", v: "original" },
-  Storybook: { icon: "storybook", v: "original" },
-  Linux: { icon: "linux", v: "original" },
-  Nginx: { icon: "nginx", v: "original" },
+  HTML5: { icon: "html5", v: "original" },
+  CSS3: { icon: "css3", v: "original" },
+  PHP: { icon: "php", v: "original" },
+  JavaScript: { icon: "javascript", v: "original" },
+  Postman: { icon: "postman", v: "original" },
+  ESLint: { icon: "eslint", v: "original" },
+  Bash: { icon: "bash", v: "original" },
 };
 
 const FALLBACKS: Record<string, string[]> = {
