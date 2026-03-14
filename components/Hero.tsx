@@ -208,7 +208,7 @@ export default function Hero() {
           </span>
         </div>
 
-        <p
+        {/* <p
           className="animate-fade-up delay-400 opacity-0"
           style={{
             fontSize: "1.15rem",
@@ -219,7 +219,7 @@ export default function Hero() {
           }}
         >
           {portfolioData.tagline}
-        </p>
+        </p> */}
 
         <div className="animate-fade-up delay-500 opacity-0" style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
           <a href="#work" className="btn-primary">
