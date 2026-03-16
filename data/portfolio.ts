@@ -2,7 +2,6 @@ export const portfolioData = {
   name: "Naufal Dzakwan",
   title: "Web Developer",
   subtitle: "",
-  // tagline: "Crafting digital experiences that leave a mark.",
   bio: "Saya merupakan web developer yang berfokus pada pengembangan website yang fungsional sekaligus memiliki tampilan yang menarik. Dengan pengalaman sekitar 2 tahun, saya telah berkontribusi dalam berbagai proyek pengembangan web untuk perusahaan maupun instansi pemerintahan daerah.",
   location: "Padang, Indonesia",
   email: "naufaldzakwan189@gmail.com",
