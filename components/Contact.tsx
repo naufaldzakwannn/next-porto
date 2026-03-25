@@ -78,7 +78,7 @@ export default function Contact() {
           pointerEvents: "none",
         }}
       >
-        Let's Talk
+        Let&apos;s Talk
       </div>
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -105,7 +105,7 @@ export default function Contact() {
                 marginBottom: "32px",
               }}
             >
-              Let's build
+              Let&apos;s build
               <br />
               something
               <br />

@@ -110,7 +110,7 @@ export const portfolioData = {
       tech: ["Next.js", "Tailwind", "OpenAI"],
       year: "2025",
       link: "https://twice-olive.vercel.app/about",
-      // github: "#",
+      github: "https://github.com/naufaldzakwannn/twice.git",
       featured: false,
       image: "/projects/twice.png",
       imageAlt: "Screenshot dashboard",
